@@ -8,11 +8,10 @@
 5. [Power User Tips](#power-user-tips)
 6. [Command Reference](#command-reference)
 7. [Troubleshooting](#troubleshooting)
-8. [GitHub Integration with Claude Code](#github-integration-with-claude-code)
 
 ## Overview
 
-MCP servers extend Claude's capabilities by providing specialized tools for different domains. Think of them as plugins that give Claude superpowers for specific tasks. You have 5 powerful MCP servers installed that transform Claude from a chatbot into a full development environment.
+MCP servers extend Claude's capabilities by providing specialized tools for different domains. Think of them as plugins that give Claude superpowers for specific tasks. You have 6 powerful MCP servers installed that transform Claude from a chatbot into a full development environment.
 
 ### Token Economics & Efficiency
 
@@ -29,6 +28,7 @@ MCP servers extend Claude's capabilities by providing specialized tools for diff
 | Code search | Desktop Commander ripgrep | ~1k | Reading all files | ~20k+ |
 | Quick fix | Direct edit | ~1k | Zen refactor full analysis | ~15k |
 | Task planning | Task Master | ~2k | Manual tracking | ~5k+ |
+| GitHub operation | GitHub MCP | ~1-3k | Multiple git commands | ~5k+ |
 
 **Token-Saving Strategies:**
 1. **Search before read**: Use ripgrep to find specific content instead of reading entire files
@@ -36,6 +36,7 @@ MCP servers extend Claude's capabilities by providing specialized tools for diff
 3. **Choose the right depth**: Use Zen's "minimal" or "low" thinking modes for simple tasks
 4. **Reuse contexts**: Keep REPLs alive, use continuation IDs, maintain default repos
 5. **Targeted queries**: Request specific documentation sections, not entire libraries
+6. **GitHub efficiency**: Use batch operations like push_files for multiple file updates
 
 ### Quick Start Commands
 ```bash
@@ -54,30 +55,36 @@ claude mcp logs <server-name>
 
 ## Installed MCP Servers
 
-### 1. 🧘 Zen MCP
+### 1. 🐙 GitHub MCP
+**Purpose**: Complete GitHub API integration for repository and project management  
+**Adoption**: Extremely popular (built-in with Claude Code)  
+**Best for**: Repository management, issues, PRs, CI/CD, code collaboration  
+**Efficiency note**: Low-moderate tokens (1-3k). Most efficient for GitHub operations vs multiple git commands.
+
+### 2. 🧘 Zen MCP
 **Purpose**: Advanced AI reasoning and analysis tools  
 **Adoption**: 4,912 stars (High activity)  
 **Best for**: Complex problem-solving, code reviews, debugging, documentation generation  
 **Efficiency note**: High token usage (5-20k per call). Use for complex tasks that truly need AI reasoning. For simple operations, consider direct implementation.
 
-### 2. 📚 Context7
+### 3. 📚 Context7
 **Purpose**: Real-time documentation lookup for any library/framework  
 **Adoption**: 21,221 stars (Most popular)  
 **Best for**: Finding up-to-date docs, code examples, API references  
 **Efficiency note**: Moderate tokens (2-5k). Faster than web search or Zen research for pure documentation needs.
 
-### 3. 💻 Desktop Commander
+### 4. 💻 Desktop Commander
 **Purpose**: File system operations and process management  
 **Best for**: File manipulation, running commands, data analysis with Python/Node REPL  
 **Efficiency note**: Minimal tokens (~500). Most efficient for file operations. Prefer over Bash for safety, but Bash offers more flexibility.
 
-### 4. 📋 Task Master
+### 5. 📋 Task Master
 **Purpose**: AI-powered project and task management  
 **Adoption**: 19,121 stars (Extremely popular)  
 **Best for**: Breaking down complex projects, tracking progress, generating tasks from PRDs  
 **Efficiency note**: Moderate tokens (2-3k). Excellent for maintaining context across long projects. Saves tokens by avoiding repeated context.
 
-### 5. 🧠 Sequential Thinking
+### 6. 🧠 Sequential Thinking
 **Purpose**: Step-by-step problem decomposition  
 **Best for**: Complex algorithms, multi-step solutions, planning  
 **Efficiency note**: Variable tokens (1-5k per step). Use for genuinely complex problems requiring iterative refinement.
@@ -92,6 +99,12 @@ claude mcp logs <server-name>
 Need documentation?
 ├─ YES → Context7 (fastest, most efficient)
 └─ NO → Continue...
+
+Working with GitHub?
+├─ Repository ops → GitHub MCP
+├─ Issues/PRs → GitHub MCP  
+├─ CI/CD → GitHub MCP
+└─ Local git → Bash tool
 
 Working with files?
 ├─ Simple read/write → Desktop Commander
@@ -109,11 +122,112 @@ Managing tasks?
 ├─ Quick todo → Your memory (save tokens)
 └─ Complex dependencies → Task Master
 
-GitHub operations?
-├─ Use git commands via Bash tool
-├─ Use gh CLI if installed
-└─ See GitHub Integration section below
+Complex problem solving?
+├─ Algorithm design → Sequential Thinking
+├─ Multi-step planning → Sequential Thinking
+└─ Simple logic → Direct implementation
 ```
+
+### 🐙 GitHub MCP - Complete GitHub Integration
+
+**Repository Operations:**
+- `create_repository` - Create new GitHub repository
+- `fork_repository` - Fork a repository to your account
+- `get_file_contents` - Get file/directory contents from repo
+- `create_or_update_file` - Create or update single file
+- `delete_file` - Delete file from repository
+- `push_files` - Push multiple files in single commit
+- `list_branches` - List repository branches
+- `create_branch` - Create new branch
+- `get_tag` - Get tag details
+- `list_tags` - List repository tags
+
+**Issue Management:**
+- `create_issue` - Create new issue
+- `update_issue` - Update existing issue
+- `get_issue` - Get issue details
+- `list_issues` - List repository issues
+- `add_issue_comment` - Add comment to issue
+- `get_issue_comments` - Get issue comments
+- `search_issues` - Search for issues across GitHub
+
+**Pull Request Management:**
+- `create_pull_request` - Create new PR
+- `update_pull_request` - Update PR details
+- `merge_pull_request` - Merge a PR
+- `get_pull_request` - Get PR details
+- `list_pull_requests` - List repository PRs
+- `get_pull_request_diff` - Get PR diff
+- `get_pull_request_files` - Get changed files
+- `update_pull_request_branch` - Update PR branch
+- `search_pull_requests` - Search PRs across GitHub
+
+**Code Review Features:**
+- `create_pending_pull_request_review` - Start a review
+- `add_comment_to_pending_review` - Add review comment
+- `submit_pending_pull_request_review` - Submit review
+- `delete_pending_pull_request_review` - Cancel review
+- `get_pull_request_reviews` - Get PR reviews
+- `get_pull_request_comments` - Get PR comments
+- `create_and_submit_pull_request_review` - Quick review
+
+**AI-Powered Features:**
+- `create_pull_request_with_copilot` - Delegate PR creation to Copilot
+- `request_copilot_review` - Request Copilot code review
+- `assign_copilot_to_issue` - Assign issue to Copilot
+
+**Workflow & Actions:**
+- `list_workflows` - List repository workflows
+- `run_workflow` - Trigger workflow run
+- `list_workflow_runs` - List workflow runs
+- `get_workflow_run` - Get run details
+- `cancel_workflow_run` - Cancel running workflow
+- `rerun_workflow_run` - Rerun entire workflow
+- `rerun_failed_jobs` - Rerun only failed jobs
+- `list_workflow_jobs` - List jobs in run
+- `get_job_logs` - Get job logs (with failed_only option)
+- `list_workflow_run_artifacts` - List run artifacts
+- `download_workflow_run_artifact` - Download artifact
+- `get_workflow_run_usage` - Get usage metrics
+
+**Security Scanning:**
+- `list_code_scanning_alerts` - List code security alerts
+- `get_code_scanning_alert` - Get specific alert details
+- `list_dependabot_alerts` - List dependency alerts
+- `get_dependabot_alert` - Get Dependabot alert details
+- `list_secret_scanning_alerts` - List secret scanning alerts
+- `get_secret_scanning_alert` - Get secret alert details
+
+**Search & Discovery:**
+- `search_repositories` - Search GitHub repositories
+- `search_code` - Search code across GitHub
+- `search_issues` - Search issues
+- `search_pull_requests` - Search PRs
+- `search_users` - Search users
+- `search_orgs` - Search organizations
+
+**Notifications & User:**
+- `get_me` - Get authenticated user details
+- `list_notifications` - List user notifications
+- `get_notification_details` - Get notification details
+- `dismiss_notification` - Mark notification as read/done
+- `manage_notification_subscription` - Manage subscriptions
+- `mark_all_notifications_read` - Mark all as read
+
+**Utility Operations:**
+- `get_commit` - Get commit details
+- `list_commits` - List commits on branch/tag
+- `list_discussion_categories` - List discussion categories
+- `list_discussions` - List repository discussions
+- `get_discussion` - Get discussion details
+- `get_discussion_comments` - Get discussion comments
+
+**Power Features:**
+- Batch file operations with `push_files`
+- Copilot integration for automated PR creation
+- Smart log retrieval with `failed_only` option
+- Review workflow with pending reviews
+- Comprehensive search across all GitHub resources
 
 ### 🧘 Zen MCP - Advanced AI Tools
 
@@ -222,12 +336,12 @@ GitHub operations?
 
 ### 🚀 Full-Stack Development Workflow
 
-1. **Project Setup**
+1. **Project Setup with GitHub**
    ```
-   "Initialize a new React project with Task Master"
-   → Task Master creates project structure
+   "Create a new repository for my React project"
+   → GitHub MCP creates repository
+   → Task Master initializes project structure
    → Parses requirements into tasks
-   → Sets up git integration
    ```
 
 2. **Documentation Research**
@@ -253,12 +367,12 @@ GitHub operations?
    → Zen codereview checks quality
    ```
 
-5. **Git & GitHub**
+5. **GitHub Integration**
    ```
    "Create a PR for the auth feature"
-   → Use git commands via Bash
-   → Create detailed commit messages
-   → Push to GitHub with proper authentication
+   → GitHub MCP creates pull request
+   → Request Copilot review
+   → Merge when approved
    ```
 
 ### 🐛 Debugging Workflow
@@ -283,6 +397,7 @@ GitHub operations?
    → Implements fix with proper error handling
    → Zen testgen creates regression tests
    → Zen precommit validates changes
+   → GitHub MCP creates PR with fix
    ```
 
 ### 📊 Data Analysis Workflow
@@ -309,18 +424,55 @@ GitHub operations?
    → Task Master tracks completion
    ```
 
+### 🔄 GitHub Workflow Examples
+
+1. **Issue Management**
+   ```
+   "Create an issue for the performance problem"
+   → GitHub MCP creates issue with details
+   → Assigns to team member
+   → Adds appropriate labels
+   ```
+
+2. **Pull Request Workflow**
+   ```
+   "Create a PR for the feature/auth branch"
+   → GitHub MCP creates PR
+   → Adds detailed description
+   → Requests specific reviewers
+   → Can delegate to Copilot for implementation
+   ```
+
+3. **CI/CD Management**
+   ```
+   "Run the deployment workflow on main branch"
+   → GitHub MCP triggers workflow
+   → Monitors run status
+   → Gets logs if failures occur
+   → Can rerun failed jobs only
+   ```
+
+4. **Security Scanning**
+   ```
+   "Check for security vulnerabilities"
+   → GitHub MCP lists code scanning alerts
+   → Gets Dependabot alerts
+   → Reviews secret scanning results
+   → Creates issues for critical findings
+   ```
+
 ## Power User Tips
 
 ### 🎯 Efficiency Maximizers
 
 1. **Batch Operations**
-   - Use Desktop Commander's multi-file read
+   - Use GitHub MCP's push_files for multiple file updates
+   - Desktop Commander's multi-file read
    - Task Master's expand_all for bulk task creation
-   - Batch git operations
 
 2. **Smart Search**
    - Desktop Commander's ripgrep > basic search
-   - Use regex patterns for complex searches
+   - GitHub MCP search_code for GitHub-wide searches
    - Context7 for library-specific searches
 
 3. **REPL Mastery**
@@ -337,25 +489,32 @@ GitHub operations?
    - Set up dependencies for automatic flow
    - Let complexity analysis guide task breakdown
 
+5. **GitHub Efficiency**
+   - Use pending reviews to batch PR comments
+   - Delegate to Copilot for routine implementations
+   - Use failed_only option for debugging CI failures
+
 ### 🔥 Advanced Techniques
 
 1. **Multi-Tool Combinations**
    ```
-   Research (Zen) → Plan (Sequential) → Implement (Desktop) → Test (Zen) → Deploy (Git/Bash)
+   GitHub (repo) → Research (Zen) → Plan (Sequential) → Implement (Desktop) → Test (Zen) → Deploy (GitHub)
    ```
 
 2. **Context Preservation**
    - Use continuation_id in Zen tools for multi-turn conversations
    - Keep Task Master tags for different workflows
-   - Maintain git branches for different features
+   - Maintain GitHub context with get_me for user info
 
 3. **Performance Optimization**
    - Chunk file writes (25-30 lines)
    - Use file offsets for large files
-   - Batch git commits when appropriate
+   - Batch GitHub operations when possible
+   - Use search before reading files
 
 4. **Security Best Practices**
    - Regular Zen secaudit runs
+   - GitHub security scanning integration
    - Pre-commit validation on sensitive code
    - Never commit secrets (use environment variables)
 
@@ -380,9 +539,8 @@ GitHub operations?
    - Both vs manual: Use tools for 3+ step processes
 
 5. **GitHub Operations**
-   - Git via Bash for version control
-   - gh CLI for GitHub-specific features
-   - Direct API calls for automation
+   - GitHub MCP vs git commands: GitHub MCP for API operations, git for local ops
+   - GitHub MCP vs gh CLI: GitHub MCP is integrated, gh needs separate install
 
 ### 💡 Productivity Hacks
 
@@ -390,19 +548,22 @@ GitHub operations?
    ```bash
    # Add to your shell config
    alias zm="claude chat 'Using zen tools, '"
+   alias gh="claude chat 'Using GitHub MCP, '"
    alias td="claude chat 'Using task master, '"
    ```
 
 2. **Template Commands**
    ```
    "Using zen debug, investigate [issue]"
+   "Using GitHub MCP, create PR for [feature]"
    "Using desktop commander, analyze [file]"
-   "Create git commit for [feature]"
+   "Create task: [description]"
+   "Think through [problem]"
    ```
 
 3. **Workflow Automation**
    - Create Task Master tags for repeated workflows
-   - Use GitHub workflows for CI/CD
+   - Use GitHub workflows triggered via MCP
    - Combine tools for complex operations
 
 ## Command Reference
@@ -418,6 +579,7 @@ claude mcp logs <server>          # View server logs
 
 # Quick Tool Access
 "Use zen to [action]"             # Trigger Zen tools
+"Use GitHub MCP to [action]"      # GitHub operations
 "Search docs for [library]"       # Context7 lookup
 "Analyze file [path]"             # Desktop Commander
 "Create task: [description]"      # Task Master
@@ -427,11 +589,17 @@ claude mcp logs <server>          # View server logs
 "Debug and fix [issue]"           # Zen debug + fix
 "Review and refactor [file]"      # Review + improve
 "Plan and implement [feature]"    # Full workflow
+"Create PR with implementation"   # GitHub + Copilot
 ```
 
 ### Tool Patterns
 
 ```
+# GitHub MCP Pattern
+"Using GitHub MCP, [action] [target]"
+Example: "Using GitHub MCP, create issue for login bug"
+Example: "Using GitHub MCP, merge PR #42"
+
 # Zen Pattern
 "Using zen [tool], [specific request]"
 Example: "Using zen thinkdeep, analyze the authentication architecture"
@@ -447,10 +615,6 @@ Example: "Search for TODO comments in /src"
 # Task Master Pattern
 "[Action] task: [description]"
 Example: "Create task: Implement user profile page"
-
-# Git Pattern
-"[Git operation] for [purpose]"
-Example: "Create commit for authentication feature"
 ```
 
 ## Troubleshooting
@@ -470,15 +634,15 @@ Example: "Create commit for authentication feature"
    claude mcp add <server>
    ```
 
-2. **Permission Denied (Desktop Commander)**
+2. **GitHub MCP Authentication**
+   - Ensure GitHub token is configured in environment
+   - Check token has required permissions (repo, workflow, etc.)
+   - Use get_me to verify authentication
+
+3. **Permission Denied (Desktop Commander)**
    - Check allowed directories in settings
    - Use absolute paths
    - Verify file permissions
-
-3. **GitHub Authentication Issues**
-   - Use personal access tokens with git
-   - Check token permissions (repo, workflow, etc.)
-   - Store tokens securely (never in code)
 
 4. **Task Master Not Finding Project**
    - Always provide projectRoot parameter
@@ -493,7 +657,7 @@ Example: "Create commit for authentication feature"
 ### Performance Tips
 
 1. **Reduce Context Usage**
-   - Use Task tool for file searches (saves 50-80% tokens)
+   - Use GitHub MCP search instead of reading many files
    - Batch related operations (single tool call vs multiple)
    - Clear completed todos regularly
    - Prefer Desktop Commander search over reading multiple files
@@ -505,136 +669,18 @@ Example: "Create commit for authentication feature"
    - Use `get_file_info` to check size before reading
 
 3. **API Rate Limits & Token Costs**
+   - GitHub MCP: ~1-3k tokens per operation (efficient)
    - Context7: ~2-5k tokens per query (very efficient)
    - Zen: 5-20k tokens depending on model and thinking_mode
    - Desktop Commander: ~100-500 tokens (most efficient)
 
 4. **Smart Tool Selection by Token Cost**
    ```
-   Minimal (<1k tokens): Desktop Commander, Git commands
-   Low (1-5k tokens): Context7, Task Master, simple Zen ops
+   Minimal (<1k tokens): Desktop Commander, simple GitHub ops
+   Low (1-5k tokens): Context7, Task Master, most GitHub MCP
    Medium (5-10k tokens): Zen with "low" thinking, Sequential Thinking
    High (10-20k tokens): Zen with "high/max" thinking, complex research
    ```
-
-## GitHub Integration with Claude Code
-
-### Overview
-Claude Code doesn't have a built-in GitHub MCP server that works reliably, but it has excellent git integration through the Bash tool. Here's how to effectively work with GitHub:
-
-### Setting Up GitHub Access
-
-1. **Personal Access Token (PAT)**
-   ```bash
-   # Create a PAT on GitHub with repo permissions
-   # Use it in git commands:
-   git clone https://<TOKEN>@github.com/username/repo.git
-   ```
-
-2. **SSH Key (Recommended for regular use)**
-   ```bash
-   # Generate SSH key
-   ssh-keygen -t ed25519 -C "your_email@example.com"
-   
-   # Add to GitHub account
-   # Then clone with:
-   git clone git@github.com:username/repo.git
-   ```
-
-### Common GitHub Operations with Claude Code
-
-1. **Cloning Repositories**
-   ```
-   "Clone the repository https://github.com/user/repo"
-   → Claude uses Bash to run git clone
-   ```
-
-2. **Creating Commits**
-   ```
-   "Create a commit for the authentication feature"
-   → Claude stages files with git add
-   → Creates meaningful commit message
-   → Commits with proper format
-   ```
-
-3. **Pushing to GitHub**
-   ```bash
-   # With token
-   git push https://<TOKEN>@github.com/username/repo.git main
-   
-   # With SSH (if configured)
-   git push origin main
-   ```
-
-4. **Creating Pull Requests**
-   ```bash
-   # If gh CLI is installed:
-   gh pr create --title "Add authentication" --body "Description"
-   
-   # Otherwise, push branch and create PR via web
-   ```
-
-5. **Working with Issues**
-   ```bash
-   # With gh CLI:
-   gh issue create --title "Bug: Login fails"
-   gh issue list
-   gh issue view 123
-   ```
-
-### Best Practices for GitHub with Claude Code
-
-1. **Security**
-   - Never hardcode tokens in files
-   - Use environment variables when possible
-   - Consider using SSH keys for regular work
-   - Tokens should have minimal required permissions
-
-2. **Workflow Tips**
-   - Let Claude handle git operations via Bash
-   - Use meaningful branch names
-   - Claude can create detailed commit messages
-   - Review changes before pushing
-
-3. **Common Patterns**
-   ```
-   # Initialize git in new project
-   "Initialize git repository and create initial commit"
-   
-   # Feature development
-   "Create a new branch for user-profile feature"
-   "Commit changes with descriptive message"
-   "Push branch to GitHub"
-   
-   # Maintenance
-   "Show git status and recent commits"
-   "Pull latest changes from main branch"
-   ```
-
-4. **Troubleshooting GitHub Operations**
-   - Authentication errors: Check token permissions
-   - Push rejected: Pull latest changes first
-   - Large files: Use .gitignore or Git LFS
-   - Merge conflicts: Claude can help resolve them
-
-### Alternative: GitHub API via curl
-
-For automation without gh CLI:
-```bash
-# Create issue via API
-curl -X POST \
-  -H "Authorization: token <TOKEN>" \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/owner/repo/issues \
-  -d '{"title":"Issue title","body":"Issue description"}'
-
-# Upload file via API
-curl -X PUT \
-  -H "Authorization: token <TOKEN>" \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/owner/repo/contents/path/file.txt \
-  -d '{"message":"Add file","content":"base64-encoded-content"}'
-```
 
 ### Getting Help
 
@@ -657,17 +703,22 @@ curl -X PUT \
 
 ## Quick Reference Card
 
-| Task              | Tool                | Example Command                        |
-| ----------------- | ------------------- | -------------------------------------- |
-| Debug code        | Zen debug           | "Debug why the API returns 500 errors" |
-| Find docs         | Context7            | "Show me Express.js middleware docs"   |
-| Edit files        | Desktop Commander   | "Add error handling to /src/api.js"    |
-| Manage tasks      | Task Master         | "Create tasks from the PRD document"   |
-| Complex planning  | Sequential Thinking | "Plan the migration to microservices"  |
-| GitHub operations | Bash + git          | "Create a commit and push to GitHub"   |
-| Code review       | Zen codereview      | "Review the authentication module"     |
-| Generate tests    | Zen testgen         | "Create tests for the User model"      |
-| Security audit    | Zen secaudit        | "Audit the payment processing code"    |
-| Refactor code     | Zen refactor        | "Refactor the legacy validation logic" |
+| Task | Tool | Example Command |
+|------|------|-----------------|
+| Create GitHub issue | GitHub MCP | "Create issue for the login bug" |
+| Create pull request | GitHub MCP | "Create PR for feature/auth branch" |
+| Review PR | GitHub MCP | "Review and approve PR #42" |
+| Run CI workflow | GitHub MCP | "Run deployment workflow on main" |
+| Debug code | Zen debug | "Debug why the API returns 500 errors" |
+| Find docs | Context7 | "Show me Express.js middleware docs" |
+| Edit files | Desktop Commander | "Add error handling to /src/api.js" |
+| Manage tasks | Task Master | "Create tasks from the PRD document" |
+| Complex planning | Sequential Thinking | "Plan the migration to microservices" |
+| Code review | Zen codereview | "Review the authentication module" |
+| Generate tests | Zen testgen | "Create tests for the User model" |
+| Security audit | Zen secaudit | "Audit the payment processing code" |
+| Refactor code | Zen refactor | "Refactor the legacy validation logic" |
+| Search GitHub | GitHub MCP | "Search for React hooks examples" |
+| Manage notifications | GitHub MCP | "Show my GitHub notifications" |
 
 Remember: Combine tools for maximum power! 🚀
