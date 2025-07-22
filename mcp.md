@@ -8,10 +8,11 @@
 5. [Power User Tips](#power-user-tips)
 6. [Command Reference](#command-reference)
 7. [Troubleshooting](#troubleshooting)
+8. [GitHub Integration with Claude Code](#github-integration-with-claude-code)
 
 ## Overview
 
-MCP servers extend Claude's capabilities by providing specialized tools for different domains. Think of them as plugins that give Claude superpowers for specific tasks. You have 6 powerful MCP servers installed that transform Claude from a chatbot into a full development environment.
+MCP servers extend Claude's capabilities by providing specialized tools for different domains. Think of them as plugins that give Claude superpowers for specific tasks. You have 5 powerful MCP servers installed that transform Claude from a chatbot into a full development environment.
 
 ### Token Economics & Efficiency
 
@@ -81,12 +82,6 @@ claude mcp logs <server-name>
 **Best for**: Complex algorithms, multi-step solutions, planning  
 **Efficiency note**: Variable tokens (1-5k per step). Use for genuinely complex problems requiring iterative refinement.
 
-### 6. 🐙 GitHub Repos Manager
-**Purpose**: Complete GitHub repository management  
-**Adoption**: 3 stars (New/Specialized)  
-**Best for**: Managing repos, issues, PRs, workflows without leaving Claude  
-**Efficiency note**: Minimal tokens per operation. More efficient than web interface for bulk operations.
-
 ## Server Capabilities & Tools
 
 ## Efficiency Decision Tree
@@ -115,9 +110,9 @@ Managing tasks?
 └─ Complex dependencies → Task Master
 
 GitHub operations?
-├─ Bulk operations → GitHub Manager
-├─ Single operation → Consider `gh` CLI directly
-└─ Complex workflows → GitHub Manager
+├─ Use git commands via Bash tool
+├─ Use gh CLI if installed
+└─ See GitHub Integration section below
 ```
 
 ### 🧘 Zen MCP - Advanced AI Tools
@@ -223,44 +218,6 @@ GitHub operations?
 - Hypothesis generation and verification
 - Handles problems with unclear scope
 
-### 🐙 GitHub Repos Manager - GitHub Operations
-
-**Key Tools:**
-Repository Management:
-- `list_repos` - List user repositories
-- `get_repo_info` - Repository details
-- `search_repos` - Search GitHub repos
-- `get_repo_contents` - Browse repo files
-- `set_default_repo` - Set default for operations
-
-Issues & PRs:
-- `list_issues` - View repository issues
-- `create_issue` - Create new issues
-- `edit_issue` - Modify existing issues
-- `list_prs` - View pull requests
-- `create_pull_request` - Create PRs
-- `create_pr_review` - Submit PR reviews
-
-File Operations:
-- `create_file` - Create files in repos
-- `update_file` - Update existing files
-- `upload_file` - Upload local files
-- `delete_file` - Remove files
-
-Workflows & Actions:
-- `list_workflows` - View GitHub Actions
-- `trigger_workflow` - Start workflows
-- `list_workflow_runs` - Check run history
-
-Advanced Features:
-- `list_branches` - Branch management
-- `create_branch` - Create new branches
-- `list_commits` - Commit history
-- `compare_commits` - Diff between commits
-- `search_code` - Search code across GitHub
-- `manage_team_repos` - Team permissions
-- `release_management` - Create/manage releases
-
 ## Development Workflows
 
 ### 🚀 Full-Stack Development Workflow
@@ -299,9 +256,9 @@ Advanced Features:
 5. **Git & GitHub**
    ```
    "Create a PR for the auth feature"
-   → GitHub manager creates feature branch
-   → Commits changes with proper messages
-   → Opens PR with detailed description
+   → Use git commands via Bash
+   → Create detailed commit messages
+   → Push to GitHub with proper authentication
    ```
 
 ### 🐛 Debugging Workflow
@@ -359,7 +316,7 @@ Advanced Features:
 1. **Batch Operations**
    - Use Desktop Commander's multi-file read
    - Task Master's expand_all for bulk task creation
-   - GitHub manager's bulk issue updates
+   - Batch git operations
 
 2. **Smart Search**
    - Desktop Commander's ripgrep > basic search
@@ -384,23 +341,23 @@ Advanced Features:
 
 1. **Multi-Tool Combinations**
    ```
-   Research (Zen) → Plan (Sequential) → Implement (Desktop) → Test (Zen) → Deploy (GitHub)
+   Research (Zen) → Plan (Sequential) → Implement (Desktop) → Test (Zen) → Deploy (Git/Bash)
    ```
 
 2. **Context Preservation**
    - Use continuation_id in Zen tools for multi-turn conversations
    - Keep Task Master tags for different workflows
-   - Set default repo in GitHub manager
+   - Maintain git branches for different features
 
 3. **Performance Optimization**
    - Chunk file writes (25-30 lines)
    - Use file offsets for large files
-   - Batch GitHub API calls
+   - Batch git commits when appropriate
 
 4. **Security Best Practices**
    - Regular Zen secaudit runs
    - Pre-commit validation on sensitive code
-   - Never commit secrets (use GitHub secrets management)
+   - Never commit secrets (use environment variables)
 
 ### 🔄 Tool Overlaps & Smart Choices
 
@@ -423,8 +380,9 @@ Advanced Features:
    - Both vs manual: Use tools for 3+ step processes
 
 5. **GitHub Operations**
-   - GitHub Manager vs `gh` CLI: Manager for workflows, `gh` for one-offs
-   - Both vs web: Always prefer CLI/Manager for automation
+   - Git via Bash for version control
+   - gh CLI for GitHub-specific features
+   - Direct API calls for automation
 
 ### 💡 Productivity Hacks
 
@@ -439,7 +397,7 @@ Advanced Features:
    ```
    "Using zen debug, investigate [issue]"
    "Using desktop commander, analyze [file]"
-   "Using github manager, create issue: [title]"
+   "Create git commit for [feature]"
    ```
 
 3. **Workflow Automation**
@@ -464,7 +422,6 @@ claude mcp logs <server>          # View server logs
 "Analyze file [path]"             # Desktop Commander
 "Create task: [description]"      # Task Master
 "Think through [problem]"         # Sequential thinking
-"GitHub: [operation]"             # GitHub manager
 
 # Power Combos
 "Debug and fix [issue]"           # Zen debug + fix
@@ -491,9 +448,9 @@ Example: "Search for TODO comments in /src"
 "[Action] task: [description]"
 Example: "Create task: Implement user profile page"
 
-# GitHub Pattern
-"GitHub: [action] [target]"
-Example: "GitHub: create issue - Bug: Login fails on mobile"
+# Git Pattern
+"[Git operation] for [purpose]"
+Example: "Create commit for authentication feature"
 ```
 
 ## Troubleshooting
@@ -519,9 +476,9 @@ Example: "GitHub: create issue - Bug: Login fails on mobile"
    - Verify file permissions
 
 3. **GitHub Authentication Issues**
-   - Regenerate personal access token
+   - Use personal access tokens with git
    - Check token permissions (repo, workflow, etc.)
-   - Verify with: `gh auth status`
+   - Store tokens securely (never in code)
 
 4. **Task Master Not Finding Project**
    - Always provide projectRoot parameter
@@ -548,18 +505,136 @@ Example: "GitHub: create issue - Bug: Login fails on mobile"
    - Use `get_file_info` to check size before reading
 
 3. **API Rate Limits & Token Costs**
-   - GitHub: 5000 requests/hour with token (essentially unlimited)
    - Context7: ~2-5k tokens per query (very efficient)
    - Zen: 5-20k tokens depending on model and thinking_mode
    - Desktop Commander: ~100-500 tokens (most efficient)
 
 4. **Smart Tool Selection by Token Cost**
    ```
-   Minimal (<1k tokens): Desktop Commander, GitHub Manager
+   Minimal (<1k tokens): Desktop Commander, Git commands
    Low (1-5k tokens): Context7, Task Master, simple Zen ops
    Medium (5-10k tokens): Zen with "low" thinking, Sequential Thinking
    High (10-20k tokens): Zen with "high/max" thinking, complex research
    ```
+
+## GitHub Integration with Claude Code
+
+### Overview
+Claude Code doesn't have a built-in GitHub MCP server that works reliably, but it has excellent git integration through the Bash tool. Here's how to effectively work with GitHub:
+
+### Setting Up GitHub Access
+
+1. **Personal Access Token (PAT)**
+   ```bash
+   # Create a PAT on GitHub with repo permissions
+   # Use it in git commands:
+   git clone https://<TOKEN>@github.com/username/repo.git
+   ```
+
+2. **SSH Key (Recommended for regular use)**
+   ```bash
+   # Generate SSH key
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   
+   # Add to GitHub account
+   # Then clone with:
+   git clone git@github.com:username/repo.git
+   ```
+
+### Common GitHub Operations with Claude Code
+
+1. **Cloning Repositories**
+   ```
+   "Clone the repository https://github.com/user/repo"
+   → Claude uses Bash to run git clone
+   ```
+
+2. **Creating Commits**
+   ```
+   "Create a commit for the authentication feature"
+   → Claude stages files with git add
+   → Creates meaningful commit message
+   → Commits with proper format
+   ```
+
+3. **Pushing to GitHub**
+   ```bash
+   # With token
+   git push https://<TOKEN>@github.com/username/repo.git main
+   
+   # With SSH (if configured)
+   git push origin main
+   ```
+
+4. **Creating Pull Requests**
+   ```bash
+   # If gh CLI is installed:
+   gh pr create --title "Add authentication" --body "Description"
+   
+   # Otherwise, push branch and create PR via web
+   ```
+
+5. **Working with Issues**
+   ```bash
+   # With gh CLI:
+   gh issue create --title "Bug: Login fails"
+   gh issue list
+   gh issue view 123
+   ```
+
+### Best Practices for GitHub with Claude Code
+
+1. **Security**
+   - Never hardcode tokens in files
+   - Use environment variables when possible
+   - Consider using SSH keys for regular work
+   - Tokens should have minimal required permissions
+
+2. **Workflow Tips**
+   - Let Claude handle git operations via Bash
+   - Use meaningful branch names
+   - Claude can create detailed commit messages
+   - Review changes before pushing
+
+3. **Common Patterns**
+   ```
+   # Initialize git in new project
+   "Initialize git repository and create initial commit"
+   
+   # Feature development
+   "Create a new branch for user-profile feature"
+   "Commit changes with descriptive message"
+   "Push branch to GitHub"
+   
+   # Maintenance
+   "Show git status and recent commits"
+   "Pull latest changes from main branch"
+   ```
+
+4. **Troubleshooting GitHub Operations**
+   - Authentication errors: Check token permissions
+   - Push rejected: Pull latest changes first
+   - Large files: Use .gitignore or Git LFS
+   - Merge conflicts: Claude can help resolve them
+
+### Alternative: GitHub API via curl
+
+For automation without gh CLI:
+```bash
+# Create issue via API
+curl -X POST \
+  -H "Authorization: token <TOKEN>" \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/owner/repo/issues \
+  -d '{"title":"Issue title","body":"Issue description"}'
+
+# Upload file via API
+curl -X PUT \
+  -H "Authorization: token <TOKEN>" \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/owner/repo/contents/path/file.txt \
+  -d '{"message":"Add file","content":"base64-encoded-content"}'
+```
 
 ### Getting Help
 
@@ -589,7 +664,7 @@ Example: "GitHub: create issue - Bug: Login fails on mobile"
 | Edit files        | Desktop Commander   | "Add error handling to /src/api.js"    |
 | Manage tasks      | Task Master         | "Create tasks from the PRD document"   |
 | Complex planning  | Sequential Thinking | "Plan the migration to microservices"  |
-| GitHub operations | GitHub Manager      | "Create a PR for the feature branch"   |
+| GitHub operations | Bash + git          | "Create a commit and push to GitHub"   |
 | Code review       | Zen codereview      | "Review the authentication module"     |
 | Generate tests    | Zen testgen         | "Create tests for the User model"      |
 | Security audit    | Zen secaudit        | "Audit the payment processing code"    |
