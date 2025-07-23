@@ -8,6 +8,7 @@
 5. [Power User Tips](#power-user-tips)
 6. [Command Reference](#command-reference)
 7. [Troubleshooting](#troubleshooting)
+8. [GitMCP Configuration Guide](#gitmcp-configuration-guide)
 
 ## Overview
 
@@ -895,6 +896,239 @@ Example: "Create task: Implement user profile page"
    - MCP Discord community
    - GitHub discussions
    - Stack Overflow (mcp tag)
+
+## GitMCP Configuration Guide
+
+### Converting Any GitHub Repository into an MCP Server
+
+GitMCP allows you to turn ANY GitHub repository into a dedicated MCP server, giving AI assistants deep context about your code and documentation. Here's how to set it up:
+
+### Step 1: Create llms.txt in Your Repository
+
+The `llms.txt` file tells GitMCP what your repository is about. Create this file in your repository root:
+
+```markdown
+# Project Name
+
+Brief description of what your project does and its purpose.
+
+## Overview
+
+Detailed explanation of your project, including:
+- Main features and capabilities
+- Technology stack used
+- Target audience or use cases
+
+## Key Features
+
+- Feature 1: Description
+- Feature 2: Description
+- Feature 3: Description
+
+## Main Documentation
+
+Explain where to find the main docs:
+- `README.md` - Getting started guide
+- `docs/` - Detailed documentation
+- `examples/` - Code examples
+
+## Purpose
+
+What this helps developers do:
+- Solve specific problems
+- Build certain types of applications
+- Integrate with other tools
+
+## Usage
+
+Basic usage instructions or quick start guide.
+
+## Integration with GitMCP
+
+To use this repository as an MCP server:
+1. Replace `github.com` with `gitmcp.io` in the repository URL
+2. Configure your AI tool to use: `https://gitmcp.io/[owner]/[repo]`
+3. Your AI assistant will have full context of this project
+```
+
+### Step 2: Configure Claude Code
+
+Add your repository as an MCP server using the Claude CLI:
+
+```bash
+# Add your repository as an MCP server
+claude mcp add [server-name] npx -- -y mcp-remote https://gitmcp.io/[owner]/[repo]
+
+# Example:
+claude mcp add my-project npx -- -y mcp-remote https://gitmcp.io/myusername/my-project
+
+# Verify it's connected
+claude mcp list
+```
+
+### Step 3: Alternative Configuration Methods
+
+#### Method A: Direct JSON Configuration
+Edit your Claude Code MCP configuration file:
+
+```json
+{
+  "mcpServers": {
+    "your-repo-name": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://gitmcp.io/owner/repo"
+      ]
+    }
+  }
+}
+```
+
+#### Method B: Multiple Repository Setup
+Configure multiple repositories at once:
+
+```bash
+# Add multiple repositories
+claude mcp add frontend npx -- -y mcp-remote https://gitmcp.io/company/frontend-app
+claude mcp add backend npx -- -y mcp-remote https://gitmcp.io/company/backend-api
+claude mcp add docs npx -- -y mcp-remote https://gitmcp.io/company/documentation
+```
+
+### Step 4: Using Your GitMCP Server
+
+Once configured, you can use your repository context in conversations:
+
+```
+"Using my-project docs, explain how the authentication works"
+"Search my-project for the payment processing implementation"
+"Get the API documentation from my-project"
+```
+
+### Best Practices for GitMCP
+
+1. **Comprehensive llms.txt**
+   - Include project overview, features, and structure
+   - Explain file organization and key directories
+   - List important files and their purposes
+   - Add usage examples and common workflows
+
+2. **Documentation Structure**
+   - Keep README.md focused on getting started
+   - Use llms.txt for AI-specific context
+   - Organize docs/ folder with clear topics
+   - Include code examples in examples/
+
+3. **Optimization Tips**
+   - Update llms.txt when project structure changes
+   - Include common troubleshooting in llms.txt
+   - Reference important files and their locations
+   - Add keywords for better search results
+
+### Example: Full GitMCP Setup
+
+Here's a complete example for a React component library:
+
+**1. Create llms.txt:**
+```markdown
+# Awesome React Components
+
+A collection of reusable React components with TypeScript support.
+
+## Overview
+
+This library provides 50+ production-ready React components including:
+- Form components with validation
+- Data visualization components
+- Layout and navigation components
+- Utility hooks and helpers
+
+Tech stack: React 18, TypeScript, Styled Components, Storybook
+
+## Key Components
+
+- Button: Customizable button with variants
+- Form: Complete form system with validation
+- DataTable: Sortable, filterable data tables
+- Chart: D3-based chart components
+- Modal: Accessible modal dialogs
+
+## Documentation Structure
+
+- `README.md` - Quick start and installation
+- `docs/components/` - Individual component docs
+- `src/components/` - Component source code
+- `src/stories/` - Storybook examples
+- `src/hooks/` - Custom React hooks
+
+## Usage
+
+npm install awesome-react-components
+
+import { Button, Form, DataTable } from 'awesome-react-components'
+
+## GitMCP Integration
+
+AI assistants can access full documentation via:
+https://gitmcp.io/yourcompany/awesome-react-components
+```
+
+**2. Add to Claude:**
+```bash
+claude mcp add react-components npx -- -y mcp-remote https://gitmcp.io/yourcompany/awesome-react-components
+```
+
+**3. Use in conversation:**
+```
+"Using react-components, show me how to implement a sortable data table"
+"Search react-components for form validation examples"
+"Get the Button component API from react-components"
+```
+
+### Troubleshooting GitMCP
+
+1. **Repository Not Found**
+   - Ensure repository is public
+   - Check owner/repo spelling
+   - Verify llms.txt exists in main branch
+
+2. **No Documentation Found**
+   - GitMCP may need time to index new files
+   - Try searching for specific files
+   - Check if llms.txt is properly formatted
+
+3. **Connection Issues**
+   - Verify MCP server is running: `claude mcp list`
+   - Check logs: `claude mcp logs [server-name]`
+   - Remove and re-add if needed
+
+### Advanced GitMCP Features
+
+1. **Version-Specific Documentation**
+   ```
+   https://gitmcp.io/owner/repo/v2.0.0
+   ```
+
+2. **Branch-Specific Content**
+   ```
+   https://gitmcp.io/owner/repo/feature-branch
+   ```
+
+3. **Private Repository Support**
+   - Currently limited to public repositories
+   - Private repo support coming soon
+
+### GitMCP vs Other Documentation Tools
+
+| Feature | GitMCP | Context7 | Crawl4AI |
+|---------|---------|----------|----------|
+| GitHub repos | ✅ Any repo | ❌ Only indexed | ❌ No |
+| Setup required | ✅ llms.txt | ❌ None | ✅ Crawl first |
+| Token usage | Low (1-3k) | Low (2-5k) | Medium (2-5k) |
+| Real-time updates | ✅ Yes | ⚠️ Periodic | ✅ On crawl |
+| Code search | ✅ Yes | ✅ Yes | ✅ Yes |
+| Best for | GitHub projects | Popular libs | Web docs |
 
 ---
 
