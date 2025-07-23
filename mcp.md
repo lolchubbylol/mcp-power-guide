@@ -162,7 +162,104 @@ Web content needed?
 
 ### 🐙 GitHub MCP - Complete GitHub Integration
 
-[Previous GitHub MCP content remains the same - 70+ tools listed]
+**Repository Operations:**
+- `create_repository` - Create new GitHub repository
+- `fork_repository` - Fork a repository to your account
+- `get_file_contents` - Get file/directory contents from repo
+- `create_or_update_file` - Create or update single file
+- `delete_file` - Delete file from repository
+- `push_files` - Push multiple files in single commit
+- `list_branches` - List repository branches
+- `create_branch` - Create new branch
+- `get_tag` - Get tag details
+- `list_tags` - List repository tags
+
+**Issue Management:**
+- `create_issue` - Create new issue
+- `update_issue` - Update existing issue
+- `get_issue` - Get issue details
+- `list_issues` - List repository issues
+- `add_issue_comment` - Add comment to issue
+- `get_issue_comments` - Get issue comments
+- `search_issues` - Search for issues across GitHub
+
+**Pull Request Management:**
+- `create_pull_request` - Create new PR
+- `update_pull_request` - Update PR details
+- `merge_pull_request` - Merge a PR
+- `get_pull_request` - Get PR details
+- `list_pull_requests` - List repository PRs
+- `get_pull_request_diff` - Get PR diff
+- `get_pull_request_files` - Get changed files
+- `update_pull_request_branch` - Update PR branch
+- `search_pull_requests` - Search PRs across GitHub
+
+**Code Review Features:**
+- `create_pending_pull_request_review` - Start a review
+- `add_comment_to_pending_review` - Add review comment
+- `submit_pending_pull_request_review` - Submit review
+- `delete_pending_pull_request_review` - Cancel review
+- `get_pull_request_reviews` - Get PR reviews
+- `get_pull_request_comments` - Get PR comments
+- `create_and_submit_pull_request_review` - Quick review
+
+**AI-Powered Features:**
+- `create_pull_request_with_copilot` - Delegate PR creation to Copilot
+- `request_copilot_review` - Request Copilot code review
+- `assign_copilot_to_issue` - Assign issue to Copilot
+
+**Workflow & Actions:**
+- `list_workflows` - List repository workflows
+- `run_workflow` - Trigger workflow run
+- `list_workflow_runs` - List workflow runs
+- `get_workflow_run` - Get run details
+- `cancel_workflow_run` - Cancel running workflow
+- `rerun_workflow_run` - Rerun entire workflow
+- `rerun_failed_jobs` - Rerun only failed jobs
+- `list_workflow_jobs` - List jobs in run
+- `get_job_logs` - Get job logs (with failed_only option)
+- `list_workflow_run_artifacts` - List run artifacts
+- `download_workflow_run_artifact` - Download artifact
+- `get_workflow_run_usage` - Get usage metrics
+
+**Security Scanning:**
+- `list_code_scanning_alerts` - List code security alerts
+- `get_code_scanning_alert` - Get specific alert details
+- `list_dependabot_alerts` - List dependency alerts
+- `get_dependabot_alert` - Get Dependabot alert details
+- `list_secret_scanning_alerts` - List secret scanning alerts
+- `get_secret_scanning_alert` - Get secret alert details
+
+**Search & Discovery:**
+- `search_repositories` - Search GitHub repositories
+- `search_code` - Search code across GitHub
+- `search_issues` - Search issues
+- `search_pull_requests` - Search PRs
+- `search_users` - Search users
+- `search_orgs` - Search organizations
+
+**Notifications & User:**
+- `get_me` - Get authenticated user details
+- `list_notifications` - List user notifications
+- `get_notification_details` - Get notification details
+- `dismiss_notification` - Mark notification as read/done
+- `manage_notification_subscription` - Manage subscriptions
+- `mark_all_notifications_read` - Mark all as read
+
+**Utility Operations:**
+- `get_commit` - Get commit details
+- `list_commits` - List commits on branch/tag
+- `list_discussion_categories` - List discussion categories
+- `list_discussions` - List repository discussions
+- `get_discussion` - Get discussion details
+- `get_discussion_comments` - Get discussion comments
+
+**Power Features:**
+- Batch file operations with `push_files`
+- Copilot integration for automated PR creation
+- Smart log retrieval with `failed_only` option
+- Review workflow with pending reviews
+- Comprehensive search across all GitHub resources
 
 ### 🧘 Zen MCP - Advanced AI Tools (v5.8.2)
 
@@ -184,21 +281,88 @@ Web content needed?
 - `listmodels` - View available AI models
 - `version` - Check Zen MCP version and configuration
 
+**Power Features:**
+- Multi-model support (Gemini 2.0/2.5, custom models)
+- Web search integration for current information
+- Thinking modes: minimal, low, medium, high, max
+- Thread continuation for multi-turn conversations
+- Image analysis support
+
 ### 📚 Context7 - Documentation Lookup
 
-[Previous Context7 content remains the same]
+**Key Tools:**
+- `resolve-library-id` - Find library IDs from package names
+- `get-library-docs` - Fetch comprehensive documentation
+
+**Power Features:**
+- 2000+ libraries with code examples
+- Version-specific documentation
+- Trust scores for library quality
+- Code snippet counts
 
 ### 💻 Desktop Commander - System Operations (v0.2.6)
 
-[Previous Desktop Commander content remains the same - 20 tools]
+**Key Tools:**
+- `read_file` - Read files with offset/pagination
+- `write_file` - Write/append files (chunked for performance)
+- `create_directory` - Create folders
+- `list_directory` - List directory contents
+- `move_file` - Move/rename files
+- `search_files` - Find files by name pattern
+- `search_code` - Ripgrep-powered code search
+- `get_file_info` - File metadata and stats
+- `edit_block` - Surgical text replacements
+- `start_process` - Start terminal processes/REPLs
+- `interact_with_process` - Send commands to running processes
+- `read_process_output` - Get process output
+- `list_sessions` - View active terminal sessions
+- `kill_process` - Terminate processes
+
+**Power Features:**
+- Python/Node REPL for data analysis
+- Smart process detection (knows when waiting for input)
+- File operation safety (allowed directories only)
+- Chunked file writing (25-30 lines recommended)
+- Image file support (PNG, JPEG, GIF, WebP)
 
 ### 📋 Task Master - Project Management (v0.21.0)
 
-[Previous Task Master content remains the same - 35 tools]
+**Key Tools:**
+- `initialize_project` - Set up Task Master in project
+- `parse_prd` - Generate tasks from PRD documents
+- `analyze_project_complexity` - Complexity analysis
+- `expand_task` - Break tasks into subtasks
+- `expand_all` - Expand all pending tasks
+- `get_tasks` - List all tasks with filtering
+- `get_task` - Get specific task details
+- `next_task` - Find next task based on dependencies
+- `set_task_status` - Update task status
+- `add_task` - Add new tasks with AI
+- `update_task` - Update task information
+- `remove_task` - Delete tasks
+- `add_dependency` - Create task dependencies
+- `list_tags` - View task tags/contexts
+- `research` - AI-powered research with project context
+
+**Power Features:**
+- Automatic task generation from PRDs
+- Dependency management and validation
+- Multiple tag contexts for different workflows
+- Complexity-based task expansion
+- Git integration for task storage
+- Multi-language support
 
 ### 🧠 Sequential Thinking - Problem Decomposition
 
-[Previous Sequential Thinking content remains the same]
+**Key Tools:**
+- `sequentialthinking` - Step-by-step problem solving
+
+**Power Features:**
+- Dynamic thought adjustment
+- Revision and backtracking support
+- Branch exploration for alternatives
+- Hypothesis generation and verification
+- Handles problems with unclear scope
 
 ### 🔍 GitMCP - Generic GitHub Documentation *[NEW]*
 
@@ -251,7 +415,44 @@ Web content needed?
 
 ### 🚀 Full-Stack Development Workflow
 
-[Previous workflow content remains the same]
+1. **Project Setup with GitHub**
+   ```
+   "Create a new repository for my React project"
+   → GitHub MCP creates repository
+   → Task Master initializes project structure
+   → Parses requirements into tasks
+   ```
+
+2. **Documentation Research**
+   ```
+   "Show me the latest React hooks documentation"
+   → Context7 fetches current React docs
+   → Provides code examples and best practices
+   ```
+
+3. **Implementation**
+   ```
+   "Implement the user authentication feature"
+   → Desktop Commander creates files
+   → Zen tools for code generation
+   → Sequential thinking for complex logic
+   ```
+
+4. **Testing & Review**
+   ```
+   "Generate tests for the auth module"
+   → Zen testgen creates comprehensive tests
+   → Desktop Commander runs test suite
+   → Zen codereview checks quality
+   ```
+
+5. **GitHub Integration**
+   ```
+   "Create a PR for the auth feature"
+   → GitHub MCP creates pull request
+   → Request Copilot review
+   → Merge when approved
+   ```
 
 ### 📖 Documentation Research Workflow *[UPDATED]*
 
@@ -304,11 +505,89 @@ Web content needed?
 
 ### 🐛 Debugging Workflow
 
-[Previous workflow content remains the same]
+1. **Identify Issue**
+   ```
+   "Debug why the login fails intermittently"
+   → Zen debug tool starts investigation
+   → Desktop Commander examines logs
+   → Sequential thinking traces execution
+   ```
+
+2. **Root Cause Analysis**
+   ```
+   → Zen tracer analyzes code flow
+   → Desktop Commander searches for patterns
+   → Identifies race condition in async code
+   ```
+
+3. **Fix & Verify**
+   ```
+   → Implements fix with proper error handling
+   → Zen testgen creates regression tests
+   → Zen precommit validates changes
+   → GitHub MCP creates PR with fix
+   ```
 
 ### 📊 Data Analysis Workflow
 
-[Previous workflow content remains the same]
+1. **Load Data**
+   ```
+   "Analyze the sales data in /data/sales.csv"
+   → Desktop Commander starts Python REPL
+   → Loads pandas, reads CSV
+   → Performs initial exploration
+   ```
+
+2. **Analysis**
+   ```
+   → Interactive data manipulation
+   → Statistical analysis
+   → Visualization preparation
+   ```
+
+3. **Report Generation**
+   ```
+   → Zen docgen creates analysis report
+   → Desktop Commander saves results
+   → Task Master tracks completion
+   ```
+
+### 🔄 GitHub Workflow Examples
+
+1. **Issue Management**
+   ```
+   "Create an issue for the performance problem"
+   → GitHub MCP creates issue with details
+   → Assigns to team member
+   → Adds appropriate labels
+   ```
+
+2. **Pull Request Workflow**
+   ```
+   "Create a PR for the feature/auth branch"
+   → GitHub MCP creates PR
+   → Adds detailed description
+   → Requests specific reviewers
+   → Can delegate to Copilot for implementation
+   ```
+
+3. **CI/CD Management**
+   ```
+   "Run the deployment workflow on main branch"
+   → GitHub MCP triggers workflow
+   → Monitors run status
+   → Gets logs if failures occur
+   → Can rerun failed jobs only
+   ```
+
+4. **Security Scanning**
+   ```
+   "Check for security vulnerabilities"
+   → GitHub MCP lists code scanning alerts
+   → Gets Dependabot alerts
+   → Reviews secret scanning results
+   → Creates issues for critical findings
+   ```
 
 ## Power User Tips
 
@@ -329,7 +608,34 @@ Web content needed?
    - Store frequently accessed docs in Supabase
    - Reuse stored content with RAG queries
 
-[Rest of Power User Tips remain the same]
+4. **Batch Operations**
+   - Use GitHub MCP's push_files for multiple file updates
+   - Desktop Commander's multi-file read
+   - Task Master's expand_all for bulk task creation
+
+5. **Smart Search**
+   - Desktop Commander's ripgrep > basic search
+   - GitHub MCP search_code for GitHub-wide searches
+   - Context7 for library-specific searches
+
+6. **REPL Mastery**
+   ```python
+   # Start Python REPL for data work
+   "Start a Python session and load pandas"
+   
+   # Keep session alive for multiple operations
+   # Reuse loaded data and libraries
+   ```
+
+7. **Task Management**
+   - Use tags for different project contexts
+   - Set up dependencies for automatic flow
+   - Let complexity analysis guide task breakdown
+
+8. **GitHub Efficiency**
+   - Use pending reviews to batch PR comments
+   - Delegate to Copilot for routine implementations
+   - Use failed_only option for debugging CI failures
 
 ### 🔥 Advanced Techniques *[UPDATED]*
 
@@ -346,7 +652,27 @@ Web content needed?
    Generate (Zen) → Save (Desktop) → Validate (Crawl4AI) → Fix → Commit (GitHub)
    ```
 
-[Rest of Advanced Techniques remain the same]
+3. **Multi-Tool Combinations**
+   ```
+   GitHub (repo) → Research (Zen) → Plan (Sequential) → Implement (Desktop) → Test (Zen) → Deploy (GitHub)
+   ```
+
+4. **Context Preservation**
+   - Use continuation_id in Zen tools for multi-turn conversations
+   - Keep Task Master tags for different workflows
+   - Maintain GitHub context with get_me for user info
+
+5. **Performance Optimization**
+   - Chunk file writes (25-30 lines)
+   - Use file offsets for large files
+   - Batch GitHub operations when possible
+   - Use search before reading files
+
+6. **Security Best Practices**
+   - Regular Zen secaudit runs
+   - GitHub security scanning integration
+   - Pre-commit validation on sensitive code
+   - Never commit secrets (use environment variables)
 
 ### 🔄 Tool Overlaps & Smart Choices *[UPDATED]*
 
@@ -361,13 +687,63 @@ Web content needed?
    - Zen codereview: For general code quality and patterns
    - Manual review: For business logic correctness
 
-[Rest of Tool Overlaps remain the same]
+**Common Overlaps:**
+
+3. **Documentation Search**
+   - Context7 vs Zen research: Use Context7 for pure docs (80% faster, 75% fewer tokens)
+   - Only use Zen when you need analysis WITH the docs
+
+4. **File Operations**
+   - Desktop Commander vs Bash: DC is safer with permissions, Bash more flexible
+   - Desktop Commander vs direct Edit: DC for exploration, Edit for known changes
+
+5. **Code Analysis**
+   - Zen analyze vs manual review: Zen for architectural decisions, manual for quick checks
+   - Zen codereview vs quick scan: Reserve Zen for PRs and critical code
+
+6. **Planning**
+   - Task Master vs Sequential Thinking: TM for project management, ST for algorithm design
+   - Both vs manual: Use tools for 3+ step processes
+
+7. **GitHub Operations**
+   - GitHub MCP vs git commands: GitHub MCP for API operations, git for local ops
+   - GitHub MCP vs gh CLI: GitHub MCP is integrated, gh needs separate install
+
+### 💡 Productivity Hacks
+
+1. **Aliases & Shortcuts**
+   ```bash
+   # Add to your shell config
+   alias zm="claude chat 'Using zen tools, '"
+   alias gh="claude chat 'Using GitHub MCP, '"
+   alias td="claude chat 'Using task master, '"
+   ```
+
+2. **Template Commands**
+   ```
+   "Using zen debug, investigate [issue]"
+   "Using GitHub MCP, create PR for [feature]"
+   "Using desktop commander, analyze [file]"
+   "Create task: [description]"
+   "Think through [problem]"
+   ```
+
+3. **Workflow Automation**
+   - Create Task Master tags for repeated workflows
+   - Use GitHub workflows triggered via MCP
+   - Combine tools for complex operations
 
 ## Command Reference *[UPDATED]*
 
 ### Essential Commands
 
 ```bash
+# MCP Management
+claude mcp list                    # List all servers
+claude mcp add <server>           # Add new server
+claude mcp remove <server>        # Remove server
+claude mcp logs <server>          # View server logs
+
 # Documentation Commands
 "Show me [library] docs"          # Context7 for indexed
 "Get GitHub docs for [repo]"      # GitMCP for any repo
@@ -377,19 +753,87 @@ Web content needed?
 "Check script for hallucinations"  # Crawl4AI validation
 "Parse repo into knowledge graph"  # Build validation DB
 
+# Quick Tool Access
+"Use zen to [action]"             # Trigger Zen tools
+"Use GitHub MCP to [action]"      # GitHub operations
+"Search docs for [library]"       # Context7 lookup
+"Analyze file [path]"             # Desktop Commander
+"Create task: [description]"      # Task Master
+"Think through [problem]"         # Sequential thinking
+
 # Quick Access Patterns
 "Using GitMCP, search [repo] for [topic]"
 "Using Crawl4AI, get docs from [website]"
 "Check if this AI code is valid"
+
+# Power Combos
+"Debug and fix [issue]"           # Zen debug + fix
+"Review and refactor [file]"      # Review + improve
+"Plan and implement [feature]"    # Full workflow
+"Create PR with implementation"   # GitHub + Copilot
 ```
 
-[Rest of Command Reference remains the same]
+### Tool Patterns
+
+```
+# GitHub MCP Pattern
+"Using GitHub MCP, [action] [target]"
+Example: "Using GitHub MCP, create issue for login bug"
+Example: "Using GitHub MCP, merge PR #42"
+
+# Zen Pattern
+"Using zen [tool], [specific request]"
+Example: "Using zen thinkdeep, analyze the authentication architecture"
+
+# Context7 Pattern
+"Show me [library] docs for [topic]"
+Example: "Show me React docs for useEffect cleanup"
+
+# Desktop Commander Pattern
+"[Action] the file [path]"
+Example: "Search for TODO comments in /src"
+
+# Task Master Pattern
+"[Action] task: [description]"
+Example: "Create task: Implement user profile page"
+```
 
 ## Troubleshooting *[UPDATED]*
 
 ### Common Issues
 
-[Previous issues remain the same]
+1. **MCP Server Connection Failed**
+   ```bash
+   # Check logs
+   claude mcp logs <server-name>
+   
+   # Restart Claude Code
+   claude restart
+   
+   # Remove and re-add server
+   claude mcp remove <server>
+   claude mcp add <server>
+   ```
+
+2. **GitHub MCP Authentication**
+   - Ensure GitHub token is configured in environment
+   - Check token has required permissions (repo, workflow, etc.)
+   - Use get_me to verify authentication
+
+3. **Permission Denied (Desktop Commander)**
+   - Check allowed directories in settings
+   - Use absolute paths
+   - Verify file permissions
+
+4. **Task Master Not Finding Project**
+   - Always provide projectRoot parameter
+   - Initialize project first
+   - Check .taskmaster directory exists
+
+5. **Zen Tools Timeout**
+   - Use appropriate thinking_mode
+   - Break complex problems into steps
+   - Check API keys for enabled models
 
 6. **GitMCP Not Finding Repository**
    - Use full owner/repo format
@@ -402,6 +846,24 @@ Web content needed?
    - Respect rate limits
 
 ### Performance Tips *[UPDATED]*
+
+1. **Reduce Context Usage**
+   - Use GitHub MCP search instead of reading many files
+   - Batch related operations (single tool call vs multiple)
+   - Clear completed todos regularly
+   - Prefer Desktop Commander search over reading multiple files
+
+2. **Optimize File Operations**
+   - Read specific line ranges for large files (offset/limit parameters)
+   - Always search before reading entire files (ripgrep first)
+   - Chunk writes for better performance (25-30 lines per write)
+   - Use `get_file_info` to check size before reading
+
+3. **API Rate Limits & Token Costs**
+   - GitHub MCP: ~1-3k tokens per operation (efficient)
+   - Context7: ~2-5k tokens per query (very efficient)
+   - Zen: 5-20k tokens depending on model and thinking_mode
+   - Desktop Commander: ~100-500 tokens (most efficient)
 
 4. **Smart Tool Selection by Token Cost**
    ```
@@ -417,6 +879,25 @@ Web content needed?
    Context7 (indexed) → GitMCP (GitHub) → Crawl4AI (web) → Zen research (analysis)
    ```
 
+### Getting Help
+
+1. **Built-in Help**
+   ```
+   /help                         # Claude Code help
+   claude mcp logs <server>      # Debug server issues
+   ```
+
+2. **Report Issues**
+   - Claude Code: https://github.com/anthropics/claude-code/issues
+   - Individual MCP servers: Check their GitHub repos
+
+3. **Community Resources**
+   - MCP Discord community
+   - GitHub discussions
+   - Stack Overflow (mcp tag)
+
+---
+
 ## Quick Reference Card *[UPDATED]*
 
 | Task | Tool | Example Command |
@@ -426,6 +907,20 @@ Web content needed?
 | Web documentation | Crawl4AI | "Crawl the official docs site" |
 | Validate AI code | Crawl4AI | "Check this script for hallucinations" |
 | Build knowledge graph | Crawl4AI | "Parse this repo into knowledge graph" |
-| [All previous entries remain...] | | |
+| Create GitHub issue | GitHub MCP | "Create issue for the login bug" |
+| Create pull request | GitHub MCP | "Create PR for feature/auth branch" |
+| Review PR | GitHub MCP | "Review and approve PR #42" |
+| Run CI workflow | GitHub MCP | "Run deployment workflow on main" |
+| Debug code | Zen debug | "Debug why the API returns 500 errors" |
+| Find docs | Context7 | "Show me Express.js middleware docs" |
+| Edit files | Desktop Commander | "Add error handling to /src/api.js" |
+| Manage tasks | Task Master | "Create tasks from the PRD document" |
+| Complex planning | Sequential Thinking | "Plan the migration to microservices" |
+| Code review | Zen codereview | "Review the authentication module" |
+| Generate tests | Zen testgen | "Create tests for the User model" |
+| Security audit | Zen secaudit | "Audit the payment processing code" |
+| Refactor code | Zen refactor | "Refactor the legacy validation logic" |
+| Search GitHub | GitHub MCP | "Search for React hooks examples" |
+| Manage notifications | GitHub MCP | "Show my GitHub notifications" |
 
 Remember: **8 MCPs = 8x the power!** Choose wisely for maximum efficiency! 🚀
