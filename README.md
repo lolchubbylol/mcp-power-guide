@@ -15,7 +15,7 @@ This is a comprehensive guide to using MCP (Model Context Protocol) servers effi
 
 - **Efficiency Decision Tree**: Quick flowchart to pick the optimal tool
 - **Token Cost Tables**: Compare efficient vs inefficient approaches
-- **Tool Overlap Guide**: Know when to use Context7 vs Zen, Desktop Commander vs Bash
+- **Tool Overlap Guide**: Know when to use Context7 vs GitMCP vs Zen
 - **Real Adoption Metrics**: Current star counts and popularity data
 - **Advanced Workflows**: Full-stack development, debugging, data analysis patterns
 
@@ -28,7 +28,7 @@ This is a comprehensive guide to using MCP (Model Context Protocol) servers effi
 
 ## 📈 Why This Guide?
 
-With 6 powerful MCP servers available, choosing the right tool can:
+With **8 powerful MCP servers** available, choosing the right tool can:
 - **Save 50-80% on token usage**
 - **Reduce response times significantly**
 - **Prevent context window exhaustion**
@@ -36,18 +36,20 @@ With 6 powerful MCP servers available, choosing the right tool can:
 
 ## 🛠️ Covered MCP Servers
 
-1. **Zen MCP** (4,912⭐) - Advanced AI reasoning
-2. **Context7** (21,221⭐) - Documentation lookup
-3. **Desktop Commander** - File operations
-4. **Task Master** (19,121⭐) - Project management
-5. **Sequential Thinking** - Problem decomposition
-6. **GitHub Repos Manager** (3⭐) - GitHub operations
+1. **Zen MCP** (4,912⭐) v5.8.2 - Advanced AI reasoning (16 tools)
+2. **GitHub MCP** (built-in) - Complete GitHub API (70+ tools)
+3. **Context7** (21,221⭐) - Documentation lookup (2 tools)
+4. **Desktop Commander** v0.2.6 - File operations (20 tools)
+5. **Task Master** (19,121⭐) v0.21.0 - Project management (35 tools)
+6. **Sequential Thinking** - Problem decomposition (1 tool)
+7. **GitMCP** - Generic GitHub docs (5 tools) *[NEW]*
+8. **Crawl4AI RAG** - Web crawling & AI validation (8 tools) *[NEW]*
 
 ## 📖 Guide Structure
 
 - Overview & Token Economics
 - Server Capabilities with Efficiency Notes
-- Efficiency Decision Tree
+- Efficiency Decision Tree (Updated for 8 MCPs)
 - Development Workflows
 - Power User Tips
 - Command Reference
