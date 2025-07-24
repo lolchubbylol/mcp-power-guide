@@ -1,7 +1,7 @@
 # MCP (Model Context Protocol) Power User Guide v2.0
 
 ## 🚀 What's New in v2.0
-- **Comprehensive Testing Results**: All 8 MCP servers thoroughly tested with real-world scenarios
+- **Comprehensive Testing Results**: All 7 MCP servers thoroughly tested with real-world scenarios
 - **Status Indicators**: Clear functional status for each server (✅ Fully Functional, ⚠️ Partially Functional)
 - **Bug Documentation**: Known issues and workarounds for each MCP
 - **AI Configuration Guide**: Complete Task Master setup with Claude Sonnet 4
@@ -18,12 +18,11 @@
 7. [Power User Tips](#power-user-tips)
 8. [Command Reference](#command-reference)
 9. [Troubleshooting](#troubleshooting)
-10. [GitMCP Configuration Guide](#gitmcp-configuration-guide)
-11. [Comprehensive Test Results](#comprehensive-test-results)
+10. [Comprehensive Test Results](#comprehensive-test-results)
 
 ## Overview
 
-MCP servers extend Claude's capabilities by providing specialized tools for different domains. You have **8 powerful MCP servers** installed that transform Claude from a chatbot into a full development environment.
+MCP servers extend Claude's capabilities by providing specialized tools for different domains. You have **7 powerful MCP servers** installed that transform Claude from a chatbot into a full development environment.
 
 ### MCP Server Status Summary
 
@@ -35,7 +34,6 @@ MCP servers extend Claude's capabilities by providing specialized tools for diff
 | 💻 Desktop Commander | v0.2.6 | ✅ Fully Functional | 20 | Requires pandas in virtual env |
 | 📋 Task Master | v0.21.0 | ✅ Fully Functional | 35 | Requires AI model configuration |
 | 🧠 Sequential Thinking | Latest | ✅ Fully Functional | 1 | None |
-| 🔍 GitMCP | Latest | ✅ Fully Functional | 5 | None |
 | 🕷️ Crawl4AI RAG | Latest | ⚠️ Partially Functional | 8 | Web crawling has bugs |
 
 ### Token Economics & Efficiency
@@ -49,7 +47,7 @@ MCP servers extend Claude's capabilities by providing specialized tools for diff
 | Operation | Efficient Choice | Token Cost | Inefficient Choice | Token Cost |
 |-----------|-----------------|------------|-------------------|------------|
 | Read docs (indexed) | Context7 | ~2-5k | Zen research | ~10-20k |
-| Read docs (any GitHub) | GitMCP | ~1-3k | Web search + parse | ~10k+ |
+| Read docs (any GitHub) | GitHub MCP get_file_contents | ~1-3k | Web search + parse | ~10k+ |
 | Simple file read | Desktop Commander | ~500 | Task + multiple tools | ~5-10k |
 | Code search | Desktop Commander ripgrep | ~1k | Reading all files | ~20k+ |
 | Quick fix | Direct edit | ~1k | Zen refactor full analysis | ~15k |
@@ -78,14 +76,15 @@ claude mcp logs <server-name>
 ### 1. 🐙 GitHub MCP ✅
 **Purpose**: Complete GitHub API integration for repository and project management  
 **Status**: Fully Functional - All 70+ tools tested successfully  
-**Best for**: Repository management, issues, PRs, CI/CD, code collaboration  
-**Tools**: 70+ GitHub API operations  
+**Best for**: Repository management, issues, PRs, CI/CD, code collaboration, reading any GitHub repository docs  
+**Tools**: 70+ GitHub API operations including get_file_contents for documentation  
 **Test Results**: 
 - ✅ Repository operations (create, fork, file management)
 - ✅ Issue and PR management
 - ✅ Workflow and CI/CD control
 - ✅ Security scanning integration
 - ✅ Copilot integration
+- ✅ Reading documentation from any GitHub repository
 
 ### 2. 🧘 Zen MCP (v5.8.2) ✅
 **Purpose**: Advanced AI reasoning and analysis tools  
@@ -152,17 +151,7 @@ mcp__task-master__models --projectRoot /your/project --setMain claude-code
 - ✅ Dynamic thought adjustment works
 - ✅ Revision and backtracking supported
 
-### 7. 🔍 GitMCP ✅
-**Purpose**: Generic GitHub repository documentation retrieval  
-**Status**: Fully Functional  
-**Best for**: Documentation for ANY GitHub repo (not just indexed ones)  
-**Tools**: 5 tools for doc/code search  
-**Test Results**:
-- ✅ Documentation fetching works for any public repo
-- ✅ Code search with pagination functional
-- ✅ Excellent complement to Context7
-
-### 8. 🕷️ Crawl4AI RAG ⚠️
+### 7. 🕷️ Crawl4AI RAG ⚠️
 **Purpose**: Web crawling, RAG queries, and AI validation  
 **Status**: Partially Functional - Web crawling has bugs, other features work  
 **Best for**: AI hallucination detection, knowledge graphs, RAG queries  
@@ -205,7 +194,7 @@ pip install pandas numpy matplotlib seaborn
 ### 3. Crawl4AI Web Crawling
 **Issue**: UnboundLocalError in crawling functions  
 **Status**: Awaiting server fix  
-**Workaround**: Use GitMCP for GitHub docs or Context7 for indexed libraries
+**Workaround**: Use GitHub MCP for GitHub docs or Context7 for indexed libraries
 
 ### 4. Zen Multi-Step Tools
 **Issue**: Tools like debug/codereview seem to "end early"  
@@ -224,7 +213,7 @@ Need documentation?
 ├─ Is it a popular library?
 │  ├─ YES → Context7 ✅ (2000+ indexed libraries)
 │  └─ NO → Is it on GitHub?
-│     ├─ YES → GitMCP ✅ (any GitHub repo)
+│     ├─ YES → GitHub MCP ✅ (get_file_contents)
 │     └─ NO → Crawl4AI RAG ⚠️ (web crawl has bugs)
 └─ Continue...
 
@@ -232,6 +221,7 @@ Working with GitHub?
 ├─ Repository ops → GitHub MCP ✅
 ├─ Issues/PRs → GitHub MCP ✅
 ├─ CI/CD → GitHub MCP ✅
+├─ Read repo docs → GitHub MCP ✅ (get_file_contents)
 └─ Local git → Bash tool
 
 Working with files?
@@ -244,7 +234,7 @@ Need AI analysis?
 ├─ Code review → Zen codereview ✅ (multi-step)
 ├─ AI validation → Crawl4AI ✅ (hallucination check)
 ├─ Quick question → Direct implementation
-└─ Research → Context7/GitMCP first, then Zen
+└─ Research → Context7/GitHub MCP first, then Zen
 
 Managing tasks?
 ├─ New project → Task Master ✅ (needs AI config)
@@ -288,8 +278,8 @@ Web content needed?
    Context7: get-library-docs("/facebook/react")
    → ✅ Retrieved hooks documentation
    
-   # Non-indexed library
-   GitMCP: fetch_generic_documentation("owner", "repo")
+   # Non-indexed library on GitHub
+   GitHub MCP: get_file_contents("owner", "repo", "README.md")
    → ✅ Retrieved custom library docs
    ```
 
@@ -312,7 +302,7 @@ Web content needed?
 
 1. **Efficiency Order** (Verified by testing):
    - Context7: 2-5k tokens for indexed libraries ✅
-   - GitMCP: 1-3k tokens for any GitHub repo ✅
+   - GitHub MCP: 1-3k tokens for any GitHub repo ✅
    - Crawl4AI: Would be 2-5k tokens but crawling broken ⚠️
 
 2. **Combined Workflow Example**:
@@ -321,8 +311,8 @@ Web content needed?
    Context7 + Zen: Analyzed React hooks patterns
    → ✅ Successful combination
    
-   # Step 2: Non-indexed? Use GitMCP
-   GitMCP: Retrieved niche library docs
+   # Step 2: Non-indexed? Use GitHub MCP
+   GitHub MCP: Retrieved niche library docs from GitHub
    → ✅ Worked for any public repo
    ```
 
@@ -360,7 +350,7 @@ Web content needed?
 
 1. **Token Savings Achieved**:
    - Used Context7 instead of Zen research: Saved ~15k tokens
-   - Used GitMCP for non-indexed repos: Saved ~7k tokens
+   - Used GitHub MCP for non-indexed repos: Saved ~7k tokens
    - Used Desktop Commander search before reading: Saved ~19k tokens
    - Batched GitHub operations: Saved ~4k tokens per batch
 
@@ -407,7 +397,7 @@ Web content needed?
 ## Comprehensive Test Results
 
 ### Test Summary
-- **Total Tools Tested**: 150+ across 8 MCP servers
+- **Total Tools Tested**: 140+ across 7 MCP servers
 - **Success Rate**: 95% (only Crawl4AI web crawling failed)
 - **Token Usage**: Optimized workflows saved 50-80% tokens
 - **Integration Tests**: 10+ tool combinations verified
@@ -421,7 +411,7 @@ Web content needed?
 
 2. **Hidden Gems**:
    - Task Master with claude-code: Zero-cost AI operations
-   - GitMCP: Perfect for non-indexed libraries
+   - GitHub MCP get_file_contents: Perfect for non-indexed libraries
    - Sequential Thinking: Excellent for complex planning
 
 3. **Requires Understanding**:
@@ -436,7 +426,7 @@ Web content needed?
    GitHub MCP (create repo) → 
    Task Master (initialize + AI config) → 
    Parse PRD → 
-   Context7/GitMCP (research) → 
+   Context7/GitHub MCP (research) → 
    Implementation
    ```
 
@@ -452,7 +442,7 @@ Web content needed?
 3. **For Documentation**:
    ```
    Context7 (try first) → 
-   GitMCP (if not indexed) → 
+   GitHub MCP (if not indexed) → 
    Zen analysis (if needed)
    ```
 
@@ -461,7 +451,7 @@ Web content needed?
 | Task | Tool | Status | Example Command |
 |------|------|--------|-----------------|
 | Popular library docs | Context7 | ✅ | "Show me React hooks documentation" |
-| Any GitHub docs | GitMCP | ✅ | "Get docs for owner/repo" |
+| Any GitHub docs | GitHub MCP | ✅ | "Get docs from owner/repo README" |
 | Web documentation | Crawl4AI | ⚠️ | "Crawl docs from [url]" (crawling broken) |
 | Validate AI code | Crawl4AI | ✅ | "Check this script for hallucinations" |
 | Create GitHub issue | GitHub MCP | ✅ | "Create issue for the login bug" |
@@ -485,10 +475,10 @@ Web content needed?
 - Added cleanup functionality documentation
 
 ### v1.0 - Initial Release
-- Basic documentation for 8 MCP servers
+- Basic documentation for 7 MCP servers
 - Initial workflow examples
 - Basic troubleshooting guide
 
 ---
 
-Remember: **8 MCPs = 8x the power!** Now with proven test results and optimization strategies! 🚀
+Remember: **7 MCPs = 7x the power!** Now with proven test results and optimization strategies! 🚀
