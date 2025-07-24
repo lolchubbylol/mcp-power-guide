@@ -4,14 +4,13 @@ This repository serves as a comprehensive guide for power users of Model Context
 
 ## Overview
 
-The MCP Power User Guide documents best practices, workflows, and advanced usage patterns for 8 integrated MCP servers:
-- GitHub MCP - 70+ tools for GitHub API operations
+The MCP Power User Guide documents best practices, workflows, and advanced usage patterns for 7 integrated MCP servers:
+- GitHub MCP - 70+ tools for GitHub API operations and repository documentation access
 - Zen MCP - 16 AI-powered analysis and workflow tools  
 - Desktop Commander - 20 tools for file system operations
 - Task Master - 40+ tools for AI-driven task management
 - Sequential Thinking - Structured problem-solving tool
 - Context7 - Library documentation retrieval
-- GitMCP - GitHub repository documentation access
 - Crawl4AI RAG - Web crawling and AI hallucination detection
 
 ## Key Features
@@ -48,11 +47,9 @@ This guide helps developers:
 3. Reference the command guide for specific tools
 4. Check troubleshooting for common issues
 
-## Integration with GitMCP
+## GitHub MCP for Documentation
 
-To use this repository as an MCP server via GitMCP:
-1. Replace `github.com` with `gitmcp.io` in the repository URL
-2. Configure your AI tool to use: `https://gitmcp.io/lolchubbylol/mcp-power-guide`
-3. Your AI assistant will have full context of all MCP documentation
-
-This enables AI assistants to provide accurate, context-aware help about MCP servers and their usage.
+The GitHub MCP server provides direct access to any GitHub repository's documentation:
+1. Use `get_file_contents` to read README.md or any documentation files
+2. Works with any public GitHub repository
+3. Provides efficient token usage (1-3k tokens per request)
