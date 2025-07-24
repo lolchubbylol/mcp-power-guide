@@ -4,7 +4,7 @@
 
 ## 🚀 What's New in v2.0
 
-- **✅ Comprehensive Testing**: All 150+ tools across 8 MCP servers tested
+- **✅ Comprehensive Testing**: All 140+ tools across 7 MCP servers tested
 - **📊 Real Test Results**: 95% success rate with detailed findings
 - **🐛 Bug Documentation**: Known issues and workarounds for each MCP
 - **🤖 AI Configuration**: Complete Task Master setup with Claude Sonnet 4
@@ -31,7 +31,6 @@ This is a comprehensive guide to using MCP (Model Context Protocol) servers effi
 | Desktop Commander | ✅ Fully Functional | 100% | Needs pandas virtual env |
 | Task Master | ✅ Fully Functional | 100% | Requires AI configuration |
 | Sequential Thinking | ✅ Fully Functional | 100% | Great for complex problems |
-| GitMCP | ✅ Fully Functional | 100% | Perfect for non-indexed repos |
 | Crawl4AI | ⚠️ Partially Functional | 60% | Web crawling broken, RAG works |
 
 ## 🚀 Quick Start
@@ -43,7 +42,7 @@ This is a comprehensive guide to using MCP (Model Context Protocol) servers effi
 
 ## 📈 Why This Guide?
 
-With **8 powerful MCP servers** available, our testing shows:
+With **7 powerful MCP servers** available, our testing shows:
 - **Token savings of 50-80%** with smart tool selection
 - **95% success rate** when using the right patterns
 - **Zero-cost AI operations** with Task Master + Claude configuration
@@ -57,8 +56,7 @@ With **8 powerful MCP servers** available, our testing shows:
 4. **💻 Desktop Commander** ✅ v0.2.6 - File operations (20 tools) - Needs pandas fix
 5. **📋 Task Master** ✅ v0.21.0 - Project management (35 tools) - Needs AI config
 6. **🧠 Sequential Thinking** ✅ - Problem decomposition (1 tool) - Works perfectly
-7. **🔍 GitMCP** ✅ - Generic GitHub docs (5 tools) - Great complement
-8. **🕷️ Crawl4AI** ⚠️ - Web crawling & AI validation (8 tools) - Crawl broken
+7. **🕷️ Crawl4AI** ⚠️ - Web crawling & AI validation (8 tools) - Crawl broken
 
 ## 📖 What's Inside
 
@@ -75,7 +73,7 @@ With **8 powerful MCP servers** available, our testing shows:
 1. **Task Master + Claude = Free AI**: Configure with claude-code for zero-cost operations
 2. **Multi-Step Zen Tools**: Not broken - they require investigation between steps
 3. **Desktop Commander Fix**: Simple virtual environment solves pandas issue
-4. **Token Optimization**: Context7 → GitMCP → Crawl4AI is the optimal doc hierarchy
+4. **Token Optimization**: Context7 → GitHub MCP is the optimal doc hierarchy
 5. **Tool Combinations**: Context7 + Zen, GitHub + Task Master work brilliantly together
 
 ## 🤝 Contributing
@@ -93,6 +91,6 @@ This guide is based on comprehensive testing. To contribute:
 
 ---
 
-**Remember: 8 MCPs = 8x the power! Now with test results to prove it!** 🚀
+**Remember: 7 MCPs = 7x the power! Now with test results to prove it!** 🚀
 
-*Based on extensive testing of all 150+ tools across 8 MCP servers*
+*Based on extensive testing of all 140+ tools across 7 MCP servers*
