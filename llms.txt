@@ -22,6 +22,131 @@ The MCP Power User Guide documents best practices, workflows, and advanced usage
 - Troubleshooting guides
 - Command reference
 
+## Context7 - Documentation Lookup
+
+Context7 is a real-time documentation lookup service for indexed libraries/frameworks.
+
+### Key Tools:
+- `resolve-library-id` - Find library IDs from package names
+- `get-library-docs` - Fetch comprehensive documentation
+
+### Power Features:
+- 2000+ libraries with code examples
+- Version-specific documentation
+- Trust scores for library quality
+- Code snippet counts
+
+### Usage Example:
+```
+"Show me React hooks documentation"
+→ Context7 resolve-library-id
+→ Get comprehensive docs with examples
+```
+
+## Zen MCP - Advanced AI Tools (v5.8.2)
+
+Zen MCP provides 16 specialized AI tools for complex problem-solving and code analysis.
+
+### Key Tools:
+- `chat` - Collaborative brainstorming with AI models
+- `thinkdeep` - Multi-stage investigation for complex problems
+- `debug` - Systematic debugging with root cause analysis
+- `codereview` - Comprehensive code quality assessment
+- `secaudit` - Security vulnerability analysis
+- `docgen` - Automatic documentation generation
+- `refactor` - Code improvement suggestions
+- `testgen` - Generate comprehensive test suites
+- `analyze` - Deep code analysis and architecture review
+- `planner` - Sequential planning for complex tasks
+- `consensus` - Multi-model consensus for decisions
+- `precommit` - Pre-commit validation and checks
+- `tracer` - Code execution flow analysis
+- `challenge` - Critical thinking tool (auto-triggers on disagreements)
+- `listmodels` - View available AI models
+- `version` - Check Zen MCP version and configuration
+
+### Power Features:
+- Multi-model support (Gemini 2.0/2.5, custom models)
+- Web search integration for current information
+- Thinking modes: minimal, low, medium, high, max
+- Thread continuation for multi-turn conversations
+- Image analysis support
+
+### Usage Example:
+```
+"Using zen debug, investigate why the login fails"
+→ Zen debug tool starts investigation
+→ Systematic root cause analysis
+→ Provides fix recommendations
+```
+
+## Token Economics & Efficiency
+
+**Understanding Token Costs:**
+- Each MCP tool call has a token cost ranging from minimal (100-500) to substantial (5,000-20,000)
+- Context window usage accumulates quickly with file reads and multi-tool workflows
+- Smart tool selection can reduce token usage by 50-80%
+
+**Efficiency Guidelines:**
+| Operation | Efficient Choice | Token Cost | Inefficient Choice | Token Cost |
+|-----------|-----------------|------------|-------------------|------------|
+| Read docs (indexed) | Context7 | ~2-5k | Zen research | ~10-20k |
+| Read docs (any GitHub) | GitMCP | ~1-3k | Web search + parse | ~10k+ |
+| Simple file read | Desktop Commander | ~500 | Task + multiple tools | ~5-10k |
+| Code search | Desktop Commander ripgrep | ~1k | Reading all files | ~20k+ |
+| Quick fix | Direct edit | ~1k | Zen refactor full analysis | ~15k |
+| Task planning | Task Master | ~2k | Manual tracking | ~5k+ |
+| GitHub operation | GitHub MCP | ~1-3k | Multiple git commands | ~5k+ |
+| Web documentation | Crawl4AI RAG | ~2-5k | Manual crawling | ~15k+ |
+| AI validation | Crawl4AI hallucination check | ~3k | Manual verification | ~10k+ |
+
+## Efficiency Decision Tree
+
+**"What tool should I use?"**
+
+```
+Need documentation?
+├─ Is it a popular library?
+│  ├─ YES → Context7 (2000+ indexed libraries)
+│  └─ NO → Is it on GitHub?
+│     ├─ YES → GitMCP (any GitHub repo)
+│     └─ NO → Crawl4AI RAG (web crawl)
+└─ Continue...
+
+Working with GitHub?
+├─ Repository ops → GitHub MCP
+├─ Issues/PRs → GitHub MCP  
+├─ CI/CD → GitHub MCP
+└─ Local git → Bash tool
+
+Working with files?
+├─ Simple read/write → Desktop Commander
+├─ Complex search → Desktop Commander (ripgrep)
+└─ Multiple files → Desktop Commander (batch)
+
+Need AI analysis?
+├─ Complex debugging → Zen debug (worth the tokens)
+├─ Code review → Zen codereview
+├─ AI validation → Crawl4AI hallucination check
+├─ Quick question → Direct implementation
+└─ Research → Context7/GitMCP first, then Zen
+
+Managing tasks?
+├─ New project → Task Master (great ROI)
+├─ Quick todo → Your memory (save tokens)
+└─ Complex dependencies → Task Master
+
+Complex problem solving?
+├─ Algorithm design → Sequential Thinking
+├─ Multi-step planning → Sequential Thinking
+└─ Simple logic → Direct implementation
+
+Web content needed?
+├─ Documentation → Crawl4AI smart_crawl
+├─ RAG search → Crawl4AI perform_rag_query
+└─ Knowledge base → Crawl4AI + Supabase
+```
+
 ## Main Documentation
 
 The primary documentation is in `mcp.md` which contains:
